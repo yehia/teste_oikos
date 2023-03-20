@@ -16,7 +16,8 @@
 <p-dialog class="edicao" [(visible)]="ativoDialog" [modal]="true" styleClass="p-fluid" [style]="{width: '663px'}">
   <ng-template pTemplate="header">
     <div class="dialog-header-edit">
-      Editar ativo
+      <span>Editar ativo</span>
+      <small>Preencha as informações para editar o ativo</small>
     </div>
 </ng-template>
 
@@ -43,20 +44,20 @@
     </div>
     <div class="field">
       <label for="valor">Valor por ação</label>
-      <input type="text" pInputText id="valor" [(ngModel)]="ativo.additionalInfo.unitPrice" required autofocus />
+      <input type="text" pInputText id="valor" [(ngModel)]="ativo.additionalInfo.unitPrice" required autofocus currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', allowNegative: false }" />
     </div>
   </ng-template>
 
   <ng-template pTemplate="footer">
     <button pButton type="button" label="Cancelar" (click)="hideDialog()" class="p-button-outlined p-button-secondary"></button>
-    <button class="btn-cadastrar">Cadastrar ativo</button>
+    <button type="button" pButton label="Cadastrar ativo" (click)="cd.accept()" class="dialog-btn-cadastrar"></button>
 </ng-template>
 </p-dialog>
 
 <div class="nav-bar">
   <div class="top">
       <img src="assets/logo.svg" class="logo" alt="logo">
-      <a href="#">Sair</a>
+      <a routerLink=""><i class="fa fa-sign-out" aria-hidden="true"></i>Sair</a>
   </div>
   <div class="bottom">
       <div class="dados-usuario">
@@ -64,7 +65,7 @@
           Este é o seu Dashboard de ativos
       </div>
 
-      <button class="btn-cadastrar">Cadastrar ativo</button>
+      <button (click)="novo()" class="btn-cadastrar">Cadastrar ativo</button>
   </div>
 </div>
 
@@ -73,7 +74,7 @@
     <span>Posição consolidada dos ativos</span>
 
     <div class="table">
-      <p-table [value]="ativos">
+      <p-table [value]="ativos" [paginator]="true" [rows]="5">
         <ng-template pTemplate="header">
             <tr>
                 <th>Empresa</th>
@@ -87,7 +88,7 @@
             <tr>
                 <td class="col-empresa">{{ativo.company}}</td>
                 <td>{{ativo.asset}}</td>
-                <td>{{ativo.type}}</td>
+                <td><p-badge [value]="ativo.type == 'acao' ? 'Ação' : 'Opção'"></p-badge></td>
                 <td class="col-valor">{{ativo.additionalInfo.unitPrice | currency:'BRL':'R$':'1.2-2'}}</td>
                 <td class="col-acoes">
                   <a (click)="editAtivo(ativo)" class="btn-editar"><i class="fa fa-pencil-square-o"></i> Editar</a>

@@ -14,15 +14,17 @@ export class AtivosComponent {
 
   constructor(private confirmationService: ConfirmationService) {}
 
-  editAtivo(ativoEdit: any) {
-
+  editAtivo(ativoEdit: any): void {
     this.ativo = {...ativoEdit};
-    console.log(this.ativo.company);
-    console.log(this.ativo.additionalInfo.unitPrice);
     this.ativoDialog = true;
-}
+  }
 
-  confirm(ativo: any) {
+  novo(): void {
+    this.ativo = {};
+    this.ativoDialog = true;
+  }
+
+  confirm(ativo: any): void {
     this.confirmationService.confirm({
         message: `Tem certeza que deseja excluir o ativo de identificador <b>${ativo.company}?<br>Essa ação não poderá ser desfeita.</b>`,
         accept: () => {
@@ -31,7 +33,7 @@ export class AtivosComponent {
     });
   }
 
-  hideDialog() {
+  hideDialog(): void {
     this.ativoDialog = false;
   }
 

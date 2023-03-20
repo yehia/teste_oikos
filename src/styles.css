@@ -14,6 +14,14 @@ body * {
   border-bottom: 1px solid #000000 !important;
 }
 
+.p-dialog .p-dialog-header {
+  border-bottom: none !important;
+}
+
+.p-dialog .p-dialog-footer {
+  border-top: none !important;
+}
+
 /* .p-dialog {
   max-width: 663px !important;
   height: 309px !important;
@@ -26,6 +34,8 @@ body * {
 }
 
 .dialog-header {
+  font-size: 24px !important;
+  font-weight: 600 !important;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,16 +53,24 @@ body * {
   color: #FFFFFF !important;
 }
 
-.p-dialog-header {
-  font-size: 24px !important;
-  font-weight: 600 !important;
+.dialog-btn-cadastrar {
+  background-color: #0D6EFD;
+  width: 230px !important;
+  color: #FFFFFF !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  border: none !important;
 }
 
 .p-dialog-content {
-  font-size: 18px !important;
+  font-size: 14px !important;
   font-weight: 400 !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
 }
 
 .field {
   margin-top: 20px !important;
 }
+

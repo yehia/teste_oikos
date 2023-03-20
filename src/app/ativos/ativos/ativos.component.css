@@ -117,7 +117,7 @@
 
 .col-acoes > a {
   text-decoration: none;
-  padding: 0px 20px;
+  padding: 10px 20px;
 }
 
 .btn-editar {
@@ -132,3 +132,22 @@
   text-align: right !important;
 }
 
+.dialog-header-edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding-left: 1rem !important;
+  padding-top: 2rem !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid #CACACA !important;
+}
+
+.dialog-header-edit > small {
+  font-weight: 400;
+  font-size: 16px;
+  color: #ADADAD;
+  margin-bottom: 10px;
+}

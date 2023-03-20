@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { TableModule } from 'primeng/table';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
-import {DialogModule} from 'primeng/dialog';
-import {InputTextModule} from 'primeng/inputtext';
-import {DropdownModule} from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { BadgeModule } from 'primeng/badge';
 
 import { AtivosComponent } from './ativos/ativos.component';
+
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+
+import { routing } from '../app-routing';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,12 @@ import { AtivosComponent } from './ativos/ativos.component';
     ConfirmDialogModule,
     DialogModule,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    BadgeModule,
+
+    CurrencyMaskModule,
+
+    routing
   ],
   exports: [
     AtivosComponent
