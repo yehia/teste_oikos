@@ -1,0 +1,101 @@
+<!-- <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog> -->
+<p-confirmDialog #cd>
+  <ng-template pTemplate="header">
+      <div class="dialog-header">
+        <span><img src="assets/alert_icon.svg" class="alert-icon" alt="logo">Deletar ativo?</span>
+        <a (click)="cd.reject()"><i class="pi pi-times"></i></a>
+      </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+      <button pButton type="button" label="Cancelar" (click)="cd.reject()" class="p-button-outlined p-button-secondary"></button>
+      <button type="button" pButton label="Excluir ativo" (click)="cd.accept()" class="p-button-danger dialog-btn-excluir"></button>
+  </ng-template>
+</p-confirmDialog>
+
+<p-dialog class="edicao" [(visible)]="ativoDialog" [modal]="true" styleClass="p-fluid" [style]="{width: '663px'}">
+  <ng-template pTemplate="header">
+    <div class="dialog-header-edit">
+      Editar ativo
+    </div>
+</ng-template>
+
+  <ng-template pTemplate="content">
+    <div class="field">
+      <label for="company">Nome da empresa</label>
+      <input type="text" pInputText id="company" [(ngModel)]="ativo.company" required autofocus />
+    </div>
+    <div class="field">
+      <label for="asset">Identificador</label>
+      <input type="text" pInputText id="asset" [(ngModel)]="ativo.asset" required autofocus />
+    </div>
+    <div class="field">
+      <label for="tipoAtivo">Tipo do ativo</label>
+      <p-dropdown [(ngModel)]="ativo.type" inputId="tipoAtivo" [options]="tipos" placeholder="Selecione...">
+          <ng-template let-tipo pTemplate="item">
+              <span>{{tipo.label}}</span>
+          </ng-template>
+      </p-dropdown>
+    </div>
+    <div class="field">
+      <label for="lote">Lote padrão</label>
+      <input type="text" pInputText id="lote" [(ngModel)]="ativo.additionalInfo.allotmentSize" required autofocus />
+    </div>
+    <div class="field">
+      <label for="valor">Valor por ação</label>
+      <input type="text" pInputText id="valor" [(ngModel)]="ativo.additionalInfo.unitPrice" required autofocus />
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton type="button" label="Cancelar" (click)="hideDialog()" class="p-button-outlined p-button-secondary"></button>
+    <button class="btn-cadastrar">Cadastrar ativo</button>
+</ng-template>
+</p-dialog>
+
+<div class="nav-bar">
+  <div class="top">
+      <img src="assets/logo.svg" class="logo" alt="logo">
+      <a href="#">Sair</a>
+  </div>
+  <div class="bottom">
+      <div class="dados-usuario">
+          <span>Olá, {{ usuario }}</span>
+          Este é o seu Dashboard de ativos
+      </div>
+
+      <button class="btn-cadastrar">Cadastrar ativo</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <span>Posição consolidada dos ativos</span>
+
+    <div class="table">
+      <p-table [value]="ativos">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Empresa</th>
+                <th>Identificador</th>
+                <th>Tipo do ativo</th>
+                <th>Valor</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-ativo>
+            <tr>
+                <td class="col-empresa">{{ativo.company}}</td>
+                <td>{{ativo.asset}}</td>
+                <td>{{ativo.type}}</td>
+                <td class="col-valor">{{ativo.additionalInfo.unitPrice | currency:'BRL':'R$':'1.2-2'}}</td>
+                <td class="col-acoes">
+                  <a (click)="editAtivo(ativo)" class="btn-editar"><i class="fa fa-pencil-square-o"></i> Editar</a>
+                  <a (click)="confirm(ativo)" class="btn-remover"><i class="fa fa-trash"></i> Excluir</a>
+                </td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

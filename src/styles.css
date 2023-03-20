@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter';
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background: transparent !important;
+  border-bottom: 1px solid #000000 !important;
+}
+
+/* .p-dialog {
+  max-width: 663px !important;
+  height: 309px !important;
+} */
+
+.alert-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #DC3545 !important;
+}
+
+.dialog-header > span {
+  margin-bottom: 10px;
+}
+
+.dialog-btn-excluir {
+  background-color: #DC3545;
+  width: 230px !important;
+  color: #FFFFFF !important;
+}
+
+.p-dialog-header {
+  font-size: 24px !important;
+  font-weight: 600 !important;
+}
+
+.p-dialog-content {
+  font-size: 18px !important;
+  font-weight: 400 !important;
+}
+
+.field {
+  margin-top: 20px !important;
+}
